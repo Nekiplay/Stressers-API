@@ -43,7 +43,7 @@ namespace StressersAPI
             {
                 var closeallelemt = driver.FindElementByXPath("//button[@class='btn btn-block btn-outline-danger']");
                 closeallelemt.Click();
-            }
+            } catch { }
         }
         public string StartStrees(string ip, int port, Method method, string login, string password)
         {
