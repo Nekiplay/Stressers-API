@@ -81,8 +81,6 @@ namespace StressersAPI
             {
                 selectElement.SelectByText("ASK");
             }
-            
-            Thread.Sleep(5000);
             var ipelemt = driver.FindElementByXPath("//input[@id='host']");
             ipelemt.SendKeys(ip);
             var portelemt = driver.FindElementByXPath("//input[@id='port']");
