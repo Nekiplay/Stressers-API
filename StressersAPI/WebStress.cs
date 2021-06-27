@@ -1,4 +1,5 @@
 ﻿using Microsoft.Edge.SeleniumTools;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
@@ -8,12 +9,16 @@ namespace StressersAPI
 {
     public class WebStress
     {
-        public void StopAll(string login, string password)
+        public void StopAll(string login, string password, Proxy proxy = null)
         {
             EdgeDriverService driverService = EdgeDriverService.CreateChromiumService();
             EdgeOptions options = new EdgeOptions();
             driverService.HideCommandPromptWindow = true;
             options.UseChromium = true;
+            if (proxy != null)
+            {
+                options.Proxy = proxy;
+            }
             options.AddArgument("headless");
             options.AddArgument("disable-gpu");
             EdgeDriver driver = new EdgeDriver(driverService, options, new TimeSpan(0, 2, 0));
@@ -45,12 +50,16 @@ namespace StressersAPI
                 closeallelemt.Click();
             } catch { }
         }
-        public string StartStrees(string ip, int port, Method method, string login, string password)
+        public string StartStrees(string ip, int port, Method method, string login, string password, Proxy proxy = null)
         {
             EdgeDriverService driverService = EdgeDriverService.CreateChromiumService();
             EdgeOptions options = new EdgeOptions();
             driverService.HideCommandPromptWindow = true;
             options.UseChromium = true;
+            if (proxy != null)
+            {
+                options.Proxy = proxy;
+            }
             options.AddArgument("headless");
             options.AddArgument("disable-gpu");
             EdgeDriver driver = new EdgeDriver(driverService, options, new TimeSpan(0, 2, 0));
